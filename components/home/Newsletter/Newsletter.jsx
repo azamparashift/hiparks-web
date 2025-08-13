@@ -28,7 +28,7 @@ const Newsletter = () => {
                     delay: 0,
                     ease: [1, 0, 0.2, 1],
                   }}
-                  viewport={{ once: false, amount: 0.1 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   className=" text-[36px] sm:text-[48px] md:text-[52px] xl:text-[56px] bw-m leading-[120%] text-white"
                   style={{ letterSpacing: "-0.04em" }}
                 >
@@ -41,9 +41,9 @@ const Newsletter = () => {
                   transition={{
                     duration: 0.45,
                     delay: 0.25,
-                    ease: [1, 0, 0.4, 1],
+                    ease: [0.7, 0, 0.4, 1],
                   }}
-                  viewport={{ once: false, amount: 0.1 }}
+                  viewport={{ once: true, amount: 0.1 }}
                   className="text-[36px] sm:text-[48px] md:text-[52px] xl:text-[56px] bw-r sm:leading-2.5 md:leading-[120%] text-white"
                   style={{ letterSpacing: "-0.04em" }}
                 >
@@ -55,8 +55,8 @@ const Newsletter = () => {
               <motion.p
                 initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.3, ease: [1, 0, 0.3, 1] }}
-                viewport={{ once: false, amount: 0.1 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.7, 0, 0.4, 1] }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="text-[16px] sm:text-[18px] md:text-[20px] xl:text-[22px] text-[#ffffff] inter-r leading-[22px] sm:leading-[28px] lg:leading-[32px] w-[60%] md:w-[80%]"
               >
                 Let’s Co-Create The Right Solution For Your Business
@@ -67,7 +67,7 @@ const Newsletter = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6, ease: [1, 0, 0.35, 1] }}
-                viewport={{ once: false, amount: 0.1 }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="pt-[8px] sm:pt-[10px]"
               >
                 <form>
@@ -95,8 +95,8 @@ const Newsletter = () => {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.8, ease: [1, 0, 0.4, 1] }}
-              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: [0.7, 0, 0.4, 1] }}
+              viewport={{ once: true, amount: 0.1 }}
               style={{ width: 324, height: 429 }}
             >
               <Image
@@ -112,8 +112,8 @@ const Newsletter = () => {
           {/* <motion.div
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
-    transition={{ duration: 0.6, delay: 0.8, ease: [1, 0, 0.4, 1] }}
-    viewport={{ once: false, amount: 0.1 }}
+    transition={{ duration: 0.6, delay: 0.8, ease: [0.7, 0, 0.4, 1] }}
+    viewport={{ once: true, amount: 0.1 }}
     className="relative w-[200px] sm:w-[250px] lg:w-[324px] aspect-[324/429] overflow-hidden"
   >
     <Image

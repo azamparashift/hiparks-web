@@ -19,7 +19,7 @@ export default function TabHeader({ activeTab, setActiveTab }) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2, ease: [1, 0, 0.3, 1] }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="md:h-[60px] lg:h-[85px] xl:h-[100px] bg-white grid grid-cols-2 md:grid-cols-5 border border-[#CDCDCD] md:rounded-2xl  lg:rounded-[28px] overflow-hidden"
     >
       {tabs.map((tab, i) => {

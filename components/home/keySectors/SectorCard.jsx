@@ -319,7 +319,7 @@ export default function SectorCard({ sector, gridStyle, index, variants }) {
     //     ease: "easeOut",
     //     delay: index * 0.156,
     //   }}
-    //   viewport={{ once: false, amount: 0.2 }}
+    //   viewport={{ once: true, amount: 0.2 }}
     //   className={`w-full h-full cursor-pointer transition border border-white/20`}
     // >
     //   <div
@@ -345,7 +345,7 @@ export default function SectorCard({ sector, gridStyle, index, variants }) {
     //         ease: "easeOut",
     //         // delay: index * 0.1,
     //       }}
-    //       viewport={{ once: false, amount: 0.2 }}
+    //       viewport={{ once: true, amount: 0.2 }}
     //       className="2xl:text-[30px] lg:text-[24px] bw-sb lg:leading-[30px] leading-[25px] lg:px-[18px] text-left px-[0px] text-[21px]"
     //     >
     //       {sector.title}
@@ -403,7 +403,7 @@ export default function SectorCard({ sector, gridStyle, index, variants }) {
       //   ease: "easeOut",
       //   delay: index * 0.15,
       // }}
-      // viewport={{ once: false, amount: 0.2 }}
+      // viewport={{ once: true, amount: 0.2 }}
       className="w-full h-full cursor-pointer transition border border-white/20"
     >
       <div
@@ -427,7 +427,7 @@ export default function SectorCard({ sector, gridStyle, index, variants }) {
             ease: "easeOut",
             delay: index * 0.15 + 0.2, // ✅ Slight delay after the card animates
           }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           className="2xl:text-[30px] lg:text-[24px] bw-sb lg:leading-[30px] leading-[25px] lg:px-[18px] text-left px-[0px] text-[21px]"
         >
           {sector.title}

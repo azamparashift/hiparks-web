@@ -11,8 +11,9 @@ import HeroBannerClient from "./Hero/HeroBannerClient";
 import MobileMapWrapper from "./Map/mobile/MobileMapWrapper";
 import ScrollVideoSection from "./ScrollReveal/ScrollRevealSection";
 import TestScroll from "./ScrollReveal/Testscroll";
+// import CardShowcase from "./Hero/CardShowcase";
 
-const HomeWrapper = ({ heroData }) => {
+const HomeWrapper = ({ heroData, testimonials = [] }) => {
   useLenis(() => {}); // optional scroll tracking
 
   return (
@@ -25,7 +26,7 @@ const HomeWrapper = ({ heroData }) => {
 
         <MobileMapWrapper />
         <KeySectors />
-        <TestimonialsSlider />
+        <TestimonialsSlider testimonials={testimonials} />
 
         {/* <ScrollRevealVideoSection
           videoSrc="/Stats_v2.mp4"
@@ -44,7 +45,6 @@ const HomeWrapper = ({ heroData }) => {
         /> */}
         {/* <ScrollVideoSection
           videoSrc="/Stats_v2.mp4"
-     
           timedTexts={[
             { start: 0, end: 3, title: "44 MN", subtitle: "SQ FT" },
             { start: 8, end: 12, title: "37", subtitle: "PARKS" },
@@ -65,10 +65,9 @@ const HomeWrapper = ({ heroData }) => {
             { start: 18, end: 26, title: "44 MN", subtitle: "SQ FT" },
             { start: 27, end: 32, title: "37", subtitle: "PARKS" },
             { start: 33, end: 46, title: "10", subtitle: "MARKETS" },
-
           ]}
         /> */}
-
+        {/* <CardShowcase /> */}
         <BrandShowcase />
         <TabbedContentShowcase />
       </div>

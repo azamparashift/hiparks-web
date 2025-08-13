@@ -89,12 +89,75 @@ import { tabData } from "./shared/tabData";
 
 // MobileTabbedContent.jsx
 
-const MobileTabbedContent = () => {
-  const [activeSlug, setActiveSlug] = useState(tabData[0].slug);
+// const MobileTabbedContent = () => {
+//   const [activeSlug, setActiveSlug] = useState(tabData[0].slug);
+//   const activeTab = tabData.find((t) => t.slug === activeSlug);
+
+//   const handleViewAll = () => {
+//     console.log("View all clicked");
+//   };
+
+//   return (
+//     <div className="block sm:hidden">
+//       <HeaderSection
+//         title={activeTab.title}
+//         description={activeTab.description}
+//       />
+//       <DropdownFilter
+//         options={tabData.map((t) => ({ value: t.slug, label: t.label }))}
+//         selected={activeSlug}
+//         onChange={setActiveSlug}
+//       />
+//       {/* swiperRef prop is no longer needed */}
+//       <CardSlider cards={activeTab.cards} />
+//       {/* onPrev/onNext props are no longer needed */}
+//       {/* <NavControls onViewAll={handleViewAll} /> */}
+//     </div>
+//   );
+// };
+
+// export default MobileTabbedContent;
+///******************************************** */
+
+// const MobileTabbedContent = ({ tabData = [] }) => {
+//   const [activeSlug, setActiveSlug] = useState(tabData?.[0]?.slug || "");
+
+//   const activeTab = tabData.find((t) => t.slug === activeSlug);
+
+//   if (!activeTab) return null; // Or fallback UI
+
+//   const handleViewAll = () => {
+//     console.log("View all clicked");
+//   };
+
+//   return (
+//     <div className="block md:hidden">
+//       <HeaderSection
+//         title={activeTab.title}
+//         description={activeTab.description}
+//       />
+//       <DropdownFilter
+//         options={tabData.map((t) => ({ value: t.slug, label: t.label }))}
+//         selected={activeSlug}
+//         onChange={setActiveSlug}
+//       />
+//       <CardSlider cards={activeTab.cards} />
+//     </div>
+//   );
+// };
+
+// export default MobileTabbedContent;
+
+const MobileTabbedContent = ({ tabData = [] }) => {
+  const defaultSlug = tabData[0]?.slug || "";
+  const [activeSlug, setActiveSlug] = useState(defaultSlug);
+
   const activeTab = tabData.find((t) => t.slug === activeSlug);
 
+  if (!activeTab) return null;
+
   const handleViewAll = () => {
-    console.log("View all clicked");
+    console.log("View all clicked for:", activeTab.slug);
   };
 
   return (
@@ -108,10 +171,11 @@ const MobileTabbedContent = () => {
         selected={activeSlug}
         onChange={setActiveSlug}
       />
-      {/* swiperRef prop is no longer needed */}
-      <CardSlider cards={activeTab.cards} />
-      {/* onPrev/onNext props are no longer needed */}
-      {/* <NavControls onViewAll={handleViewAll} /> */}
+      <CardSlider
+        cards={activeTab.cards}
+        onViewAll={handleViewAll}
+        type={activeTab.slug}
+      />
     </div>
   );
 };

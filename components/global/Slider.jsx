@@ -47,14 +47,14 @@ const Slider = () => {
     //   initial={{ opacity: 0 }}
     //   whileInView={{ opacity: 1 }}
     //   transition={{ duration: 1.2, delay: 0.6, ease: [1, 0, 0.3, 1] }}
-    //   viewport={{ once: false, amount: 0.2 }}
+    //   viewport={{ once: true, amount: 0.2 }}
     //   className="relative overflow-hidden fix w-full sm:w-[90%] bg-inherit gap-[26px] hidden lg:flex flex-col merqueSlider mx-auto "
     // >
     //   <motion.div
     //     // initial={{ opacity: 0 }}
     //     // whileInView={{ opacity: 1 }}
     //     // transition={{ duration: 1, delay: 0.2 }}
-    //     // viewport={{ once: false, amount: 0.2 }}
+    //     // viewport={{ once: true, amount: 0.2 }}
     //     className="flex items-center justify-between merqueSlide h-fit"
     //   >
     //     <Marquee direction="left" speed={120}>
@@ -80,7 +80,7 @@ const Slider = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2, delay: 0.6, ease: [1, 0, 0.3, 1] }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="relative overflow-hidden fix bg-inherit gap-[26px] flex flex-col merqueSlider mx-auto"
     >
       <motion.div className="flex items-center justify-between merqueSlide h-fit">

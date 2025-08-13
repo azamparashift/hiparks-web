@@ -118,7 +118,7 @@
 //   "
 //           initial="hidden"
 //           whileInView="show"
-//           viewport={{ once: false, amount: 0.1 }}
+//           viewport={{ once: true, amount: 0.1 }}
 //           // style={{
 //           //   display: "grid",
 //           //   gridTemplateColumns: "repeat(3, 360px)",
@@ -167,7 +167,7 @@
 //                   ease: "easeOut",
 //                   delay: index * 0.1,
 //                 }}
-//                 viewport={{ once: false, amount: 0.2 }}
+//                 viewport={{ once: true, amount: 0.2 }}
 //               >
 //                 <SectorCard sector={sector} position={position} />
 //               </motion.div>
@@ -186,7 +186,7 @@
 //       "
 //           initial="hidden"
 //           whileInView="show"
-//           viewport={{ once: false, amount: 0.1 }}
+//           viewport={{ once: true, amount: 0.1 }}
 //         >
 //           {keySectors.map((sector, index) => {
 //             let gridStyle = {};
@@ -232,7 +232,7 @@
 //                   ease: "easeOut",
 //                   delay: index * 0.1,
 //                 }}
-//                 viewport={{ once: false, amount: 0.2 }}
+//                 viewport={{ once: true, amount: 0.2 }}
 //               >
 //                 <SectorCard sector={sector} position={position} />
 //               </motion.div>
@@ -386,7 +386,7 @@
 //           className="grid"
 //           initial="hidden"
 //           whileInView="show"
-//           viewport={{ once: false, amount: 0.1 }}
+//           viewport={{ once: true, amount: 0.1 }}
 //           style={{
 //             display: "grid",
 //             gridTemplateColumns: "repeat(3, 360px)",
@@ -416,7 +416,7 @@
 //                   ease: "easeOut",
 //                   delay: index * 0.1,
 //                 }}
-//                 viewport={{ once: false, amount: 0.2 }}
+//                 viewport={{ once: true, amount: 0.2 }}
 //               >
 //                 <SectorCard sector={sector} />
 //               </motion.div>
@@ -622,14 +622,14 @@ export default function KeySectors() {
           //   duration: 0.6,
           //   ease: "easeIn",
           // }}
-          className="text-[35px] md:text-[45px] lg:text-[56px] xl:text-[66px] z-10 bw-m lg:leading-[65px] xl:leading-[69px] md:leading-[58px] leading-[45px] justify-start 2xl:-mb-36 fix 2xl:pb-[30px] "
+          className="text-[35px] md:text-[45px] lg:text-[56px] xl:text-[66px] z-10 bw-m lg:leading-[65px] xl:leading-[69px] pb-[28px] sm:pb-0 md:leading-[58px] leading-[45px] justify-start 2xl:-mb-36 fix 2xl:pb-[30px] "
         >
           <motion.span
             initial={{ x: "-100px", opacity: 0 }}
             whileInView={{ x: "0", opacity: 1 }}
             transition={{ duration: 1, ease: [0.7, 0, 0.4, 1], delay: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            className="flex items-center gap-3  md:gap-[20px] whitespace-nowrap"
+            viewport={{ once: true, amount: 0.1 }}
+            className="flex items-center gap-3  md:gap-[27px] 1280:gap-[20px] whitespace-nowrap tracking-[-0.04em]"
           >
             Key Sectors{" "}
             <motion.div className="relative inline-block overflow-hidden  align-middle w-full max-w-[249px] h-auto">
@@ -637,7 +637,7 @@ export default function KeySectors() {
                 className="lg:flex hidden justify-start h-[58px] overflow-hidden"
                 initial={{ width: 0 }}
                 whileInView={{ width: "257px" }}
-                viewport={{ once: false, amount: 0.6 }}
+                viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 1, ease: [0.7, 0, 0.4, 1], delay: 0.5 }}
               >
                 <img
@@ -650,7 +650,7 @@ export default function KeySectors() {
                 className="lg:hidden flex justify-start sm:justify-start h-[35px] sm:h-[40px] overflow-hidden"
                 initial={{ width: 0 }}
                 whileInView={{ width: "102px" }}
-                viewport={{ once: false, amount: 0.6 }}
+                viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 1, ease: [0.7, 0, 0.4, 1], delay: 0.5 }}
               >
                 <img
@@ -665,8 +665,8 @@ export default function KeySectors() {
             initial={{ x: "-100px", opacity: 0 }}
             whileInView={{ x: "0", opacity: 1 }}
             transition={{ duration: 1.4, ease: [0.7, 0, 0.4, 1], delay: 0.2 }}
-            viewport={{ once: false, amount: 0.1 }}
-            className="block bw-r"
+            viewport={{ once: true, amount: 0.1 }}
+            className="block bw-r tracking-[-0.04em]"
           >
             We work With
           </motion.span>
@@ -686,7 +686,7 @@ export default function KeySectors() {
   "
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           // style={{
           //   display: "grid",
           //   gridTemplateColumns: "repeat(3, 360px)",
@@ -733,7 +733,7 @@ export default function KeySectors() {
                   ease: "easeOut",
                   delay: index * 0.1,
                 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <SectorCard sector={sector} position={position} />
               </motion.div>
@@ -760,7 +760,7 @@ export default function KeySectors() {
       "
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {keySectors.map((sector, index) => {
             let gridStyle = {};
@@ -804,7 +804,7 @@ export default function KeySectors() {
               //   ease: "easeOut",
               //   delay: index * 0.1,
               // }}
-              // viewport={{ once: false, amount: 0.2 }}
+              // viewport={{ once: true, amount: 0.2 }}
               // >
               <motion.div
                 // className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
@@ -812,7 +812,7 @@ export default function KeySectors() {
                 initial="hidden"
                 whileInView="show"
                 style={gridStyle}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <SectorCard
                   variants={cardVariants}
@@ -846,7 +846,7 @@ export default function KeySectors() {
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {keySectors.map((sector, index) => {
             let gridStyle = {};

@@ -31,10 +31,10 @@
 //     </section>
 //   );
 // }
-import { fetchHeroContent } from "@/lib/cms";
+// import { fetchHeroContent } from "@/lib/cms";
 import HeroBannerClient from "./HeroBannerClient";
 
 export default async function HeroBanner() {
-  const heroData = await fetchHeroContent();
-  return <HeroBannerClient heroData={heroData[0]} />;
+  // const heroData = await fetchHeroContent();
+  return <HeroBannerClient />;
 }

@@ -64,7 +64,7 @@ const items = [
 export default function HeroIntroSector() {
   return (
     <div className="min-h-screen space-y-4 text-black fix">
-      <h1 className="text-[66px] z-10 bw-m leading-[70px] 
+      <h1 className="text-[66px] z-10 bw-m leading-[70px] ">
         <span className="flex items-center gap-4">
           Grade A{" "}
           <div style={{ width: 133, height: 58, position: "relative" }}>

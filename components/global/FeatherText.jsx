@@ -11,7 +11,7 @@
 //       variants={featherContainer}
 //       initial="hidden"
 //       whileInView="show"
-//       viewport={{ once: false, amount: 0.3 }}
+//       viewport={{ once: true, amount: 0.3 }}
 //     >
 //       {words.map((word, index) => (
 //         <motion.span
@@ -37,7 +37,7 @@
 //         initial={{ opacity: 0 }}
 //         whileInView={{ opacity: 1 }}
 //         transition={{ duration: 0.1 }}
-//         viewport={{ once: false }}
+//         viewport={{ once: true }}
 //         className="relative z-10"
 //       >
 //         {text}
@@ -51,7 +51,7 @@
 //           duration: 1.2,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false }}
+//         viewport={{ once: true }}
 //         className="absolute top-0 left-0 z-20 w-full h-full bg-white"
 //       />
 //     </div>
@@ -70,7 +70,7 @@ export default function FeatherText({ text, className = "" }) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 2 }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         className="relative z-10"
       >
         {text}
@@ -84,7 +84,7 @@ export default function FeatherText({ text, className = "" }) {
           duration: 2.8,
           ease: [0.77, 0, 0.175, 1],
         }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         className="absolute top-0 left-0 z-20 w-full h-full origin-top-left bg-white"
       />
     </div>
@@ -102,7 +102,7 @@ export default function FeatherText({ text, className = "" }) {
 //         initial={{ opacity: 0, x: -20 }}
 //         whileInView={{ opacity: 1, x: 0 }}
 //         transition={{ duration: 1, ease: [0.77, 0, 0.175, 1], delay: 0.3 }}
-//         viewport={{ once: false }}
+//         viewport={{ once: true }}
 //         className="relative z-10 bg-white" // <-- background to hide text before reveal
 //       >
 //         {text}
@@ -116,7 +116,7 @@ export default function FeatherText({ text, className = "" }) {
 //           duration: 1.8,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false }}
+//         viewport={{ once: true }}
 //         className="absolute top-0 left-0 z-20 w-full h-full origin-top-left bg-white"
 //       />
 //     </div>
@@ -136,7 +136,7 @@ export default function FeatherText({ text, className = "" }) {
 //         duration: 1.2,
 //         ease: [0.77, 0, 0.175, 1],
 //       }}
-//       viewport={{ once: false, amount: 0.3 }}
+//       viewport={{ once: true, amount: 0.3 }}
 //       className={`inline-block ${className}`}
 //     >
 //       {text}
@@ -157,7 +157,7 @@ export default function FeatherText({ text, className = "" }) {
 //           duration: 1.2,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false, amount: 0.3 }}
+//         viewport={{ once: true, amount: 0.3 }}
 //         className="relative z-10 inline-block"
 //       >
 //         {text}
@@ -171,7 +171,7 @@ export default function FeatherText({ text, className = "" }) {
 //           duration: 1.2,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false, amount: 0.3 }}
+//         viewport={{ once: true, amount: 0.3 }}
 //         className="absolute inset-0 z-20 bg-white"
 //       />
 //     </span>
@@ -197,7 +197,7 @@ export default function FeatherText({ text, className = "" }) {
 //           duration: 1.2,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false, amount: 0.3 }}
+//         viewport={{ once: true, amount: 0.3 }}
 //         className="relative z-10 inline-block"
 //       >
 //         {text}
@@ -211,7 +211,7 @@ export default function FeatherText({ text, className = "" }) {
 //           duration: 2.2,
 //           ease: [0.77, 0, 0.175, 1],
 //         }}
-//         viewport={{ once: false, amount: 0.3 }}
+//         viewport={{ once: true, amount: 0.3 }}
 //         className={`absolute top-0 left-0 w-full h-full z-20 bg-${bgColor}`}
 //       />
 //     </span>

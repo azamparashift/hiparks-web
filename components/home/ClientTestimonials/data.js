@@ -6,7 +6,7 @@ export const testimonialsData = [
     quote:
       "They really understood the warehouse aesthetics that we were looking for. We couldn’t be happier with our new facility.",
     logo: "/home/clients/clientlogos/clientlogo1.svg",
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    video: "/",
     thumbnail: "/home/clients/c1.png",
   },
   {
@@ -36,7 +36,7 @@ export const testimonialsData = [
     quote:
       "They really understood the warehouse aesthetics that we were looking for. We couldn’t be happier with our new facility.",
     logo: "/home/clients/clientlogos/clientlogo1.svg",
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    video: "/",
     thumbnail: "/home/clients/c1.png",
   },
   ,
@@ -47,7 +47,7 @@ export const testimonialsData = [
     quote:
       "They really understood the warehouse aesthetics that we were looking for. We couldn’t be happier with our new facility.",
     logo: "/home/clients/clientlogos/clientlogo1.svg",
-    video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    video: "/",
     thumbnail: "/home/clients/c1.png",
   },
 ];

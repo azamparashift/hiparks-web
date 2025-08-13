@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function RegionCard({ park }) {
   return (
-    <div className="min-w-[280px] min-h-[375px] bg-[#1A1A1A] rounded-none  shadow-lg">
+    <div className="min-w-[300px] min-h-[375px] bg-[#1A1A1A] rounded-none  shadow-lg">
       <img
         src={park.image}
         alt={park.label}
@@ -37,7 +37,7 @@ export default function RegionCard({ park }) {
 
           <div className="flex justify-between">
             <p className="bw-r bw-m text-[13px]">Certification:</p>
-            <p className="bw-m text-[15px]">{park.certification}</p>
+            <p className="bw-m text-[14px]">{park.certification}</p>
           </div>
         </div>
 

@@ -2,8 +2,8 @@ export const tabData = [
   {
     slug: "case-studies",
     label: "Case Studies",
-    title: "Case Studies",
-    // title: "Case Studies – Driving Business Excellence",
+    // title: "Case Studies",
+    title: "Case Studies – Driving Business Excellence",
     description:
       "Strategic implementation of Horizon's top-tier industrial and logistics real estate solutions.",
     cards: [

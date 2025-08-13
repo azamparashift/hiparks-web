@@ -27,99 +27,123 @@
   height: 100%;
   overflow: hidden;
 } */
+* {
+  transition-timing-function: cubic-bezier(0.7, 0, 0.4, 1);
+}
 body {
   overscroll-behavior: none;
 }
+/* body {
+  overscroll-behavior-y: contain;
+} */
 
 /* Barlow short classes */
 .bw-t {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 100;
   font-style: normal;
 }
 .bw-xl {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 200;
   font-style: normal;
 }
 .bw-l {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 300;
   font-style: normal;
 }
 .bw-r {
   font-family: var(--font-barlow);
+  /* letter-spacing: -1.2px; */
   font-weight: 400;
   font-style: normal;
 }
 .bw-m {
   font-family: var(--font-barlow);
+  /* letter-spacing: -2px; */
   font-weight: 500;
   font-style: normal;
 }
 .bw-sb {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 600;
   font-style: normal;
 }
 .bw-b {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 700;
   font-style: normal;
 }
 .bw-xb {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 800;
   font-style: normal;
 }
 .bw-bk {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 900;
   font-style: normal;
 }
 
 .bw-ti {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 100;
   font-style: italic;
 }
 .bw-xli {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 200;
   font-style: italic;
 }
 .bw-li {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 300;
   font-style: italic;
 }
 .bw-ri {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 400;
   font-style: italic;
 }
 .bw-mi {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 500;
   font-style: italic;
 }
 .bw-sbi {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 600;
   font-style: italic;
 }
 .bw-bi {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 700;
   font-style: italic;
 }
 .bw-xbi {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 800;
   font-style: italic;
 }
 .bw-bki {
   font-family: var(--font-barlow);
+  /* letter-spacing: -3.08px; */
   font-weight: 900;
   font-style: italic;
 }
@@ -300,7 +324,7 @@ body {
 .testimonial-swiper .swiper-slide .swiper-slide-inner {
   transform: scale(0.9);
   opacity: 1;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: transform 0.4s ease, opacity 1.4s cubic-bezier(0.7, 0, 0.4, 1);
 }
 
 .testimonial-swiper .swiper-slide-active .swiper-slide-inner {
@@ -662,6 +686,55 @@ body {
   padding-bottom: 151px !important;
   /* padding-left: px; */
   margin-top: -22px;
+}
+
+/* ScrollBar Style */
+/* Webkit Scrollbar (Chrome, Edge, Safari) */
+/* Scoped custom scrollbar for .custom-scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #22b148, #f47922);
+  border-radius: 8px;
+  border: 1px solid #1a1a1a;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #22b148, #ff8e3b);
+}
+
+/* Firefox support (limited to color) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #22b148 #1a1a1a;
+}
+
+/* globals.css or any CSS file that's imported */
+.gradient-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #ac38d9, #f47922);
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 0;
+}
+
+.gradient-hover:hover::before {
+  opacity: 1;
 }
 
 /* Mobile Screen */

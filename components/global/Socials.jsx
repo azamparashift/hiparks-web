@@ -273,69 +273,112 @@ const Socials = () => {
           //   href={social.link}
           //   target="_blank"
           //   className={`
-          //   group flex flex-col-reverse justify-between
+          //     group flex flex-col-reverse justify-between
+          //     p-[16px] sm:p-[20px]
+          //     transition-all duration-500 ease-in-out
+          //     hover:bg-gradient-to-r from-[#AC38D9] to-[#F47922]
+          //     active:bg-[radial-gradient(circle_at_bottom_left,_#D96D6A_0%,_#893DA2_100%)]
+          //     border-b border-[#CDCDCD]
+          //     ${!isLastInRow ? "border-r" : ""}
+          //     ${!isLastInRowLg ? "lg:border-r" : ""}
+          //     will-change-[background]
+          //   `}
+          // >
+          //         <Link
+          //           key={social.name}
+          //           href={social.link}
+          //           target="_blank"
+          //           className={`
+          //   gradient-hover group relative z-10
+          //   flex flex-col-reverse justify-between
           //   p-[16px] sm:p-[20px]
-          //   transition-all duration-300
-          //   hover:bg-[radial-gradient(circle_at_bottom_left,_#D96D6A_0%,_#893DA2_100%)]
-          //   active:bg-[radial-gradient(circle_at_bottom_left,_#D96D6A_0%,_#893DA2_100%)]
+          //   transition-colors duration-500 ease-in-out
           //   border-b border-[#CDCDCD]
           //   ${!isLastInRow ? "border-r" : ""}
           //   ${!isLastInRowLg ? "lg:border-r" : ""}
           // `}
-          // >
-          //   <h2 className="bw-r text-2xl md:text-[30px] tion-colors duration-100 group-hover:text-white">
-          //     {social.name}
-          //   </h2>
+          //         >
+          //           {/* Text */}
+          //           {/* <h2
+          //             className="bw-r text-2xl md:text-[30px] tracking-tight
+          //             transition-colors duration-300 ease-in-out group-hover:text-white"
+          //           >
+          //             {social.name}
+          //           </h2> */}
 
-          //   <span className="sm:w-[50px] h-fit sm:h-[50px] w-full md:w-full flex items-end justify-end relative">
-          //     <Image
-          //       src="/external.svg"
-          //       alt="external icon"
-          //       width={40}
-          //       height={40}
-          //       className="absolute transition-opacity duration-300 group-hover:opacity-0 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
-          //     />
-          //     <Image
-          //       src="/whiteexternal.svg"
-          //       alt="external icon hover"
-          //       width={40}
-          //       height={40}
-          //       className="transition-opacity duration-300 opacity-0 group-hover:opacity-100 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
-          //     />
-          //   </span>
-          // </Link>
+          //           {/* <h2 className="bw-r text-2xl md:text-[30px] tracking-tight relative z-10 transition-colors duration-300 ease-in-out group-hover:text-white">
+          //             {social.name}
+          //           </h2> */}
+          //           <h2
+          //             className="bw-r text-2xl md:text-[30px] tracking-tight relative z-10
+          //   transition-colors duration-300 ease-in-out
+          //   group-hover:text-white group-active:text-white group-focus:text-white"
+          //           >
+          //             {social.name}
+          //           </h2>
+
+          //           {/* Icon */}
+          //           <span className="sm:w-[50px] h-fit sm:h-[50px] w-full md:w-full flex items-end justify-end relative">
+          //             <img
+          //               src="/external.svg"
+          //               alt="external icon"
+          //               width={40}
+          //               height={40}
+          //               className="absolute transition-opacity duration-300 ease-in-out group-hover:opacity-0 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
+          //               style={{ willChange: "opacity" }}
+          //             />
+          //             <img
+          //               src="/whiteexternal.svg"
+          //               alt="external icon hover"
+          //               width={40}
+          //               height={40}
+          //               className="transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
+          //               style={{ willChange: "opacity" }}
+          //             />
+          //           </span>
+          //         </Link>
           <Link
             key={social.name}
             href={social.link}
             target="_blank"
             className={`
-              group flex flex-col-reverse justify-between
-              p-[16px] sm:p-[20px]
-              transition-all duration-500 ease-in-out
-              hover:bg-gradient-to-r from-[#AC38D9] to-[#F47922]
-              active:bg-[radial-gradient(circle_at_bottom_left,_#D96D6A_0%,_#893DA2_100%)]
-              border-b border-[#CDCDCD]
-              ${!isLastInRow ? "border-r" : ""}
-              ${!isLastInRowLg ? "lg:border-r" : ""}
-              will-change-[background]
-            `}
+    group gradient-hover relative z-10
+    flex flex-col-reverse justify-between
+    p-[16px] sm:p-[20px]
+    transition-colors duration-500
+    border-b border-[#CDCDCD]
+    focus:outline-none
+    ${!isLastInRow ? "border-r" : ""}
+    ${!isLastInRowLg ? "lg:border-r" : ""}
+  `}
           >
             {/* Text */}
             <h2
-              className="bw-r text-2xl md:text-[30px] 
-              transition-colors duration-300 ease-in-out group-hover:text-white"
+              className="
+      bw-r text-2xl md:text-[30px] tracking-tight relative z-10
+      transition-colors duration-300 ease-in-out
+      group-hover:text-white
+      group-focus:text-white
+      group-active:text-white
+    "
             >
               {social.name}
             </h2>
 
             {/* Icon */}
-            <span className="sm:w-[50px] h-fit sm:h-[50px] w-full md:w-full flex items-end justify-end relative">
+            <span className="sm:w-[50px] h-fit sm:h-[50px] w-full md:w-full flex items-end justify-end relative z-10">
               <img
                 src="/external.svg"
                 alt="external icon"
                 width={40}
                 height={40}
-                className="absolute transition-opacity duration-300 ease-in-out group-hover:opacity-0 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
+                className="
+        absolute transition-opacity duration-300 ease-in-out
+        group-hover:opacity-0
+        group-focus:opacity-0
+        group-active:opacity-0
+        h-[30px] w-[30px] md:h-[40px] md:w-[40px]
+      "
                 style={{ willChange: "opacity" }}
               />
               <img
@@ -343,7 +386,14 @@ const Socials = () => {
                 alt="external icon hover"
                 width={40}
                 height={40}
-                className="transition-opacity duration-300 ease-in-out opacity-0 group-hover:opacity-100 h-[30px] w-[30px] md:h-[40px] md:w-[40px]"
+                className="
+        transition-opacity duration-300 ease-in-out
+        opacity-0
+        group-hover:opacity-100
+        group-focus:opacity-100
+        group-active:opacity-100
+        h-[30px] w-[30px] md:h-[40px] md:w-[40px]
+      "
                 style={{ willChange: "opacity" }}
               />
             </span>

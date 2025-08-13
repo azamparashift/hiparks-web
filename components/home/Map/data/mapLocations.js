@@ -156,7 +156,7 @@ export const highlightedRegions = {
       },
     ],
   },
-  westbengal: {
+  NCR: {
     label: "West Bengal",
     fill: "#2E373A",
     stroke: "#000",
@@ -184,7 +184,7 @@ export const highlightedRegions = {
         area: "500 acres",
         potential: "High",
         certification: "Green Certified",
-        color: "#22B148",
+        color: "#22 B148",
       },
       {
         id: 2,
@@ -381,3 +381,24 @@ export const highlightedRegions = {
     ],
   },
 };
+
+// export function mergeWithManualCoords(manualRegions, apiRegions) {
+//   const merged = { ...manualRegions };
+//   Object.keys(manualRegions).forEach((key) => {
+//     const manual = manualRegions[key];
+//     const api = apiRegions?.[key];
+//     if (!api) return;
+//     // match by apiId if present, otherwise by index
+//     const locations = manual.locations.map((mLoc, i) => {
+//       const matchById = api.locations.find((a) => a.apiId === mLoc.id);
+//       const apiLoc = matchById || api.locations[i] || {};
+//       return { ...mLoc, ...apiLoc };
+//     });
+//     merged[key] = {
+//       ...manual,
+//       numberBox: { ...manual.numberBox, label: api.numberBox.label },
+//       locations,
+//     };
+//   });
+//   return merged;
+// }

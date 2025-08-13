@@ -37,7 +37,7 @@ import { motion } from "framer-motion";
 //       initial={{ y: "-100px" }}
 //       whileInView={{ y: 0 }}
 //       transition={{ duration: 1.4, ease: [1, 0, 0.4, 1] }}
-//       viewport={{ once: false, amount: 0 }}
+//       viewport={{ once: true, amount: 0 }}
 //       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-[102px]  px-6"
 //     >
 //       <BrandLogo />

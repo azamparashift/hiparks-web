@@ -14,7 +14,7 @@ const BrandShowcase = () => {
         initial={{ y: "40px", opacity: 0 }}
         whileInView={{ y: "0", opacity: 1 }}
         transition={{ duration: 0.65, ease: [1, 0, 0.3, 1], delay: 0.2 }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         className="bw-r text-[36px] sm:text-[46px] md:text-[48px] lg:text-[52px] xl:text-[56px] leading-[100%]"
       >
         Brands{" "}
@@ -26,7 +26,7 @@ const BrandShowcase = () => {
           initial={{ y: "40px", opacity: 0 }}
           whileInView={{ y: "0", opacity: 1 }}
           transition={{ duration: 0.65, ease: [1, 0, 0.3, 1], delay: 0.2 }}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           className="bw-m"
         >
           We Serve

@@ -161,29 +161,29 @@ const Header = () => {
     <div className="flex flex-col z-20 gap-[30px]">
       <div className="">
         <motion.h1
-          className=" text-[36px] whitespace-nowrap overflow-hidden leading-[118%] lg:leading-[60px] xl:leading-[120%] 1440:leading-[125%]  md:text-[45px] lg:text-[56px] xl:text-[66px] bw-m"
+          className=" text-[36px] whitespace-nowrap overflow-hidden tracking-tight leading-[118%] lg:leading-[60px] xl:leading-[120%] 1440:leading-[125%]  md:text-[45px] lg:text-[56px] xl:text-[66px] bw-m"
           initial={{ width: 0 }}
           whileInView={{ width: "100%" }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
           // animate={{ width: 0 }}
           transition={{
             // delay: 0.2,
             duration: 1.4,
-            ease: "easeOut",
-            type: "tween",
+            ease: [0.7, 0, 0.4, 1],
+            // type: "tween",
           }}
         >
           Our Integrated
         </motion.h1>
 
         <motion.div className="flex items-center ">
-          <div className="h-[54px] md:w-[180px] w-[37vw] lg:w-[239px] lg:h-[80px] lg:mr-5 ">
+          <div className="h-[54px] md:w-[180px] w-[38vw] sm:w-[37vw] lg:w-[239px] lg:h-[80px] lg:mr-5 ">
             <motion.h2
               initial={{ width: 0 }}
               whileInView={{ width: "100%" }}
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ duration: 1.4, delay: 0.3, ease: [0.7, 0, 0.4, 1] }}
-              className="text-[36px] whitespace-nowrap max-w-fit overflow-hidden md:text-[45px] leading-[120%] lg:text-[56px] xl:text-[66px] bw-r"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.4, ease: [0.7, 0, 0.4, 1] }}
+              className="text-[36px] whitespace-nowrap max-w-fit overflow-hidden md:text-[45px] leading-[120%] tracking-tighter lg:text-[56px] xl:text-[66px] bw-r"
             >
               Solutions
             </motion.h2>
@@ -193,7 +193,7 @@ const Header = () => {
             className="lg:flex hidden justify-start h-[58px] overflow-hidden"
             initial={{ width: 0 }}
             whileInView={{ width: "157px" }}
-            viewport={{ once: false, amount: 0.6 }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 1, ease: [0.7, 0, 0.4, 1], delay: 0.5 }}
           >
             <img src="/frm.png" alt="Truck" className="object-cover h-full" />
@@ -202,17 +202,17 @@ const Header = () => {
             className="lg:hidden flex justify-start sm:justify-start h-[35px] sm:h-[40px] overflow-hidden"
             initial={{ width: 0 }}
             whileInView={{ width: "172px" }}
-            viewport={{ once: false, amount: 0.6 }}
+            viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 1, ease: [0.7, 0, 0.4, 1], delay: 0.5 }}
           >
             <img src="/frm.png" alt="Truck" className="object-cover h-full" />
           </motion.div>
         </motion.div>
         <motion.p
-          className="w-fit sm:pt-[14px] pt-2 text-[16px] inter-r leading-[30px] m-0"
+          className="w-fit sm:pt-[14px] pt-2 text-[16px] inter-r text-black leading-[26px] m-0"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{
             delay: 0.6,
             duration: 0.65,
@@ -220,14 +220,17 @@ const Header = () => {
             type: "tween",
           }}
         >
-          Placeholder for sub-heading here...
+          Our commitment is to build the systems that keep your business moving.
+          Hence, our integrated approach ensures you have everything you need to
+          scale smarter and operate faster, while caring for the people who
+          power your growth.
         </motion.p>
       </div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{
           delay: 0.65,
           duration: 0.6,
