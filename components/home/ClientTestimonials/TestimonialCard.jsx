@@ -350,7 +350,7 @@
 "use client";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 
@@ -359,6 +359,15 @@ import { X } from "lucide-react";
 // This component's internal logic is already correct.
 // ===================================================================
 const VideoPopup = ({ video, name, onClose }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    // Ensures this runs only in the browser
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null; // Avoid SSR issues
+
   return createPortal(
     <AnimatePresence>
       {video && (

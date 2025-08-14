@@ -268,7 +268,109 @@
 //   );
 // };
 
-"use client";
+// "use client";
+// import React, { useEffect, useRef, useState } from "react";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation } from "swiper/modules";
+// import "swiper/css";
+// import { ArrowLeft, ArrowRight } from "lucide-react";
+// import Btn from "@/components/global/Btn";
+// import CharCard from "./CharCard";
+
+// export const CardSlider = ({ cards, onViewAll, type }) => {
+//   const [isBeginning, setIsBeginning] = useState(true);
+//   const [isEnd, setIsEnd] = useState(false);
+//   const swiperRef = useRef(null); // ref to access Swiper instance
+
+//   // Reset Swiper when `type` (or `cards`) changes
+//   useEffect(() => {
+//     if (swiperRef.current) {
+//       swiperRef.current.slideTo(0); // go to first slide
+//       setTimeout(() => {
+//         // ensure Swiper updates navigation state
+//         setIsBeginning(swiperRef.current.isBeginning);
+//         setIsEnd(swiperRef.current.isEnd);
+//       }, 50);
+//     }
+//   }, [cards]);
+
+//   return (
+//     <div className="pb-2 mt-4">
+//       <div className="relative">
+//         <Swiper
+//           spaceBetween={16}
+//           slidesPerView={1}
+//           modules={[Navigation]}
+//           navigation={{
+//             prevEl: ".swiper-button-prev",
+//             nextEl: ".swiper-button-next",
+//           }}
+//           cssMode={true}
+//           onSwiper={(swiper) => {
+//             swiperRef.current = swiper;
+//             setIsBeginning(swiper.isBeginning);
+//             setIsEnd(swiper.isEnd);
+//           }}
+//           onSlideChange={(swiper) => {
+//             setIsBeginning(swiper.isBeginning);
+//             setIsEnd(swiper.isEnd);
+//           }}
+//           breakpoints={{
+//             640: {
+//               slidesPerView: 1,
+//             },
+//             768: {
+//               slidesPerView: 2,
+//               spaceBetween: 30,
+//             },
+//             1024: {
+//               slidesPerView: 3,
+//             },
+//           }}
+//         >
+//           {cards.map((card, idx) => (
+//             <SwiperSlide
+//               key={idx}
+//               style={idx === cards.length - 1 ? { paddingRight: "0px" } : {}}
+//             >
+//               <CharCard
+//                 charImage={card.image}
+//                 charcont={card.category}
+//                 charTitle={card.title}
+//                 description={card.description}
+//                 type={type}
+//               />
+//             </SwiperSlide>
+//           ))}
+//         </Swiper>
+
+//         {/* Navigation Buttons */}
+//         <div className="flex items-center justify-between mt-4">
+//           <div className="flex gap-3">
+//             <button
+//               className={`swiper-button-prev flex items-center justify-center transition-opacity duration-300 ${
+//                 isBeginning ? "opacity-30 cursor-not-allowed" : "opacity-100"
+//               }`}
+//               disabled={isBeginning}
+//             >
+//               {/* <ArrowLeft size={20} /> */}
+//             </button>
+//             <button
+//               className={`swiper-button-next flex items-center justify-center transition-opacity duration-300 ${
+//                 isEnd ? "opacity-30 cursor-not-allowed" : "opacity-100"
+//               }`}
+//               disabled={isEnd}
+//             >
+//               {/* <ArrowRight size={20} /> */}
+//             </button>
+//           </div>
+//           <Btn text="View All" onClick={onViewAll} />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -282,17 +384,18 @@ export const CardSlider = ({ cards, onViewAll, type }) => {
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef(null); // ref to access Swiper instance
 
-  // Reset Swiper when `type` (or `cards`) changes
+  // Reset Swiper and navigation states when `cards` or `type` changes
   useEffect(() => {
     if (swiperRef.current) {
-      swiperRef.current.slideTo(0); // go to first slide
+      // Reset to first slide
+      swiperRef.current.slideTo(0);
+      // Update navigation states
       setTimeout(() => {
-        // ensure Swiper updates navigation state
         setIsBeginning(swiperRef.current.isBeginning);
         setIsEnd(swiperRef.current.isEnd);
-      }, 50);
+      }, 100); // Increased timeout to ensure Swiper updates
     }
-  }, [cards]);
+  }, [cards, type]);
 
   return (
     <div className="pb-2 mt-4">
@@ -353,7 +456,7 @@ export const CardSlider = ({ cards, onViewAll, type }) => {
               }`}
               disabled={isBeginning}
             >
-              {/* <ArrowLeft size={20} /> */}
+              <ArrowLeft size={20} />
             </button>
             <button
               className={`swiper-button-next flex items-center justify-center transition-opacity duration-300 ${
@@ -361,7 +464,7 @@ export const CardSlider = ({ cards, onViewAll, type }) => {
               }`}
               disabled={isEnd}
             >
-              {/* <ArrowRight size={20} /> */}
+              <ArrowRight size={20} />
             </button>
           </div>
           <Btn text="View All" onClick={onViewAll} />
