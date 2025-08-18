@@ -456,7 +456,7 @@ export const CardSlider = ({ cards, onViewAll, type }) => {
               }`}
               disabled={isBeginning}
             >
-              <ArrowLeft size={20} />
+              {/* <ArrowLeft size={20} /> */}
             </button>
             <button
               className={`swiper-button-next flex items-center justify-center transition-opacity duration-300 ${
@@ -464,7 +464,7 @@ export const CardSlider = ({ cards, onViewAll, type }) => {
               }`}
               disabled={isEnd}
             >
-              <ArrowRight size={20} />
+              {/* <ArrowRight size={20} /> */}
             </button>
           </div>
           <Btn text="View All" onClick={onViewAll} />

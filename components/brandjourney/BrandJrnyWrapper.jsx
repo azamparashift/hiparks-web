@@ -22,6 +22,15 @@ const BrandJrnyWrapper = () => {
       <Mission_value />
       <Leadership />
       <Awards />
+      {/* <div style={{ width: '100%', height: '600px' }}>
+        <iframe
+          src="https://phpstack-819107-5760335.cloudwaysapps.com/"
+          width="100%"
+          height="100%"
+          style={{ border: 'none' }}
+          allowFullScreen
+        ></iframe>
+      </div> */}
     </div>
   );
 };

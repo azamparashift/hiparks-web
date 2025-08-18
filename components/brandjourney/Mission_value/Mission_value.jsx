@@ -14,7 +14,7 @@ export default function Mission_value() {
     return (
 
         <>
-            <main ref={container_new} className="w-full hidden xl:block " style={{ height: '250vh' }}>
+            <main ref={container_new} className="w-full hidden xl:block" style={{ height: '250vh' }}>
                 {/* Purpose Card */}
                 <ReactLenis root>
                     <Purpose progress={scrollYProgress} className='' />
@@ -51,7 +51,7 @@ export default function Mission_value() {
                 <div className='flex flex-col md:flex-row'>
                     <div className="relative overflow-hidden pt-[30px] pb-[40px] px-[15px] w-[100%] bg-[#8B37A4]">
                         <h3 className="text-white bw-m text-[43px] leading-[52px] mb-[10px]"><span className="bw-l">Our</span> Values </h3>
-
+                        <p className='bw-m text-white text-[21px]'>Our values define who we are. These are the ideals that give us roots to anchor and wings to fly. They help us create a better, sustainable future for all our stakeholders.</p>
                         <div className='mt-[30px] flex flex-col gap-[20px]'>
 
                             {/* Agility  */}
@@ -83,7 +83,7 @@ export default function Mission_value() {
                         </div>
 
                     </div>
-                    <img src='/brand_journey/value_img.jpg' className="w-full object-cover h-[250px] md:h-[445px] md:w-[50%]" />
+                    <img src='/brand_journey/value_img.jpg' className="w-full object-cover h-[250px] md:h-[555px] md:w-[50%]" />
                 </div>
 
             </div>
@@ -103,14 +103,14 @@ function Purpose({ progress }) {
     const frst_img_width = useTransform(progress, [0, 0.4], ['50%', '0%']);
 
     // Purpose box
-    const prps_dv_height = useTransform(progress, [0, 0.4], ['350px', '218px']);
+    const prps_dv_height = useTransform(progress, [0, 0.4], ['350px', '170px']);
     const prps_dv_bg = useTransform(progress, [0, 0.4], ['#22B148', '#fff']);
     const prps_dv_hd = useTransform(progress, [0, 0.4], ['#fff', '#000']);
     const prps_dv_p = useTransform(progress, [0, 0.4], ['1', '0']);
     const prps_dv_vctr = useTransform(progress, [0, 0.4], ['1', '0']);
 
     // Mission box
-    const msn_dv_height = useTransform(progress, [0, 0.4], ['218px', '350px']);
+    const msn_dv_height = useTransform(progress, [0, 0.4], ['170px', '350px']);
     const msn_dv_bg = useTransform(progress, [0, 0.4], ['#FFFFFF', '#F47922']);
     const msn_dv_hd = useTransform(progress, [0, 0.4], ['#000', '#fff']);
     // const msn_dv_p = useTransform(progress, [0, 0.4], ['0', '1']);
@@ -167,15 +167,15 @@ function Purpose({ progress }) {
 
                                     {/*------------ Purpose box ------------*/}
                                     <motion.div style={{ height: prps_dv_height, background: prps_dv_bg }} transition={{ duration: 0.8, ease: 'easeOut', }} className="relative w-full overflow-hidden py-[50px] px-[30px]">
-                                        <motion.h3 style={{ color: prps_dv_hd }} transition={{ duration: 0.8, ease: 'easeOut', }} className="bw-m text-[76px] leading-[90px] mb-[10px]"><span className="bw-l">Our</span> Purpose </motion.h3>
-                                        <motion.p style={{ opacity: prps_dv_p }} transition={{ duration: 0.8, ease: 'easeOut', }} className="text-[28px] bw-m text-white leading-[33px] w-[530px]">Enable our customers succeed by proactively delivering agile solutions for accelerated growth.</motion.p>
+                                        <motion.h3 style={{ color: prps_dv_hd }} transition={{ duration: 0.8, ease: 'easeOut', }} className="bw-m text-[76px] leading-[60px] mb-[15px]"><span className="bw-l">Our</span> Purpose </motion.h3>
+                                        <motion.p style={{ opacity: prps_dv_p }} transition={{ duration: 0.8, ease: 'easeOut', }} className="text-[25px] bw-m text-white leading-[33px] w-[530px]">Enable our customers succeed by proactively delivering agile solutions for accelerated growth.</motion.p>
                                         <motion.img style={{ opacity: prps_dv_vctr }} transition={{ duration: 0.8, ease: 'easeOut', }} src='/brand_journey/purpose_arrow.svg' className="absolute right-[30px] top-[78px]" />
                                     </motion.div>
 
                                     {/*------------ Mission box ------------*/}
                                     <motion.div style={{ height: msn_dv_height, background: msn_dv_bg }} transition={{ duration: 0.8, ease: 'easeOut', }} className="w-full overflow-hidden pt-[50px] pb-[50px] px-[30px] relative">
-                                        <motion.h3 style={{ color: msn_dv_hd }} transition={{ duration: 0.8, ease: 'easeOut', }} className="bw-m text-[76px] leading-[90px] mb-[10px]"><span className="bw-l">Our</span> Mission </motion.h3>
-                                        <motion.p style={{ opacity: msn_dv_p }} transition={{ duration: 0.2, ease: 'linear', }} className="text-white text-[28px] bw-m leading-[33px] w-[530px]">Make Horizon the dominant and preferred industrial and warehousing partner, sustainably delivering benchmark quality and superior returns.</motion.p>
+                                        <motion.h3 style={{ color: msn_dv_hd }} transition={{ duration: 0.8, ease: 'easeOut', }} className="bw-m text-[76px] leading-[60px] mb-[15px]"><span className="bw-l">Our</span> Mission </motion.h3>
+                                        <motion.p style={{ opacity: msn_dv_p }} transition={{ duration: 0.2, ease: 'linear', }} className="text-white text-[25px] bw-m leading-[33px] w-[530px]">Make Horizon the dominant and preferred industrial and warehousing partner, sustainably delivering benchmark quality and superior returns.</motion.p>
                                         <motion.img style={{ opacity: msn_dv_vctr }} transition={{ duration: 0.8, ease: 'easeOut', }} src='/brand_journey/purpose_arrow.svg' className="absolute right-[30px] top-[78px]" />
                                     </motion.div>
 
@@ -191,38 +191,38 @@ function Purpose({ progress }) {
 
                         {/*------------ fourth box ------------*/}
                         <motion.div style={{ y: fourth_box, opacity: fourth_box_opacity }} transition={{ duration: 0.1, ease: 'easeOut', }} className="w-[100%]">
-                            <div className="relative flex gap-[20px] pl-[20px] mt-[0px]  h-[570px]">
+                            <div className="relative flex gap-[20px] pl-[20px] mt-[0px] h-[600px]">
 
                                 {/*------------ Value box ------------*/}
                                 <div className="relative overflow-hidden py-[25px] px-[30px] w-[50%] bg-[#8B37A4]">
                                     <h3 style={{ color: prps_dv_hd }} transition={{ duration: 0.8, ease: 'easeOut', }} className="text-white bw-m text-[76px] leading-[67px] mb-[10px]"><span className="bw-l">Our</span> Values </h3>
-
-                                    <div className='mt-[30px] flex flex-col gap-[45px]'>
+                                    <p className='bw-m text-white text-[25px] leading-[33px]'>Our values define who we are. These are the ideals that give us roots to anchor and wings to fly. They help us create a better, sustainable future for all our stakeholders.</p>
+                                    <div className='mt-[30px] flex flex-col gap-y-[22px] gap-x-[25px]'>
 
                                         {/* Agility  */}
                                         <div className='flex gap-[45px] pl-[25px]'>
-                                            <img src='/brand_journey/agility_icon.svg' />
+                                            <img src='/brand_journey/agility_icon.svg' className='w-[70px]' />
                                             <div className=''>
-                                                <h4 className='text-white text-[30px] bw-m'>Agility</h4>
-                                                <p className='text-white text-[20px] bw-l leading-[28px]'>Be proactive and alert to the needs of our stakeholders</p>
+                                                <h4 className='text-white text-[28px] bw-m'>AGILITY</h4>
+                                                <p className='text-white text-[17px] bw-l leading-[25px]'>Be proactive and alert to the needs of our stakeholders</p>
                                             </div>
                                         </div>
 
                                         {/* Collaboration */}
                                         <div className='flex gap-[45px] pl-[25px]'>
-                                            <img src='/brand_journey/collabration_icon.svg' />
+                                            <img src='/brand_journey/collabration_icon.svg' className='w-[70px]' />
                                             <div className=''>
-                                                <h4 className='text-white text-[30px] bw-m'>Collaboration</h4>
-                                                <p className='text-white text-[20px] bw-l leading-[28px]'>Practise mutual respect and teamwork to maximise value of partnerships</p>
+                                                <h4 className='text-white text-[28px] bw-m'>COLLABORATION</h4>
+                                                <p className='text-white text-[17px] bw-l leading-[25px]'>Practise mutual respect and teamwork to maximise value of partnerships</p>
                                             </div>
                                         </div>
 
                                         {/* EXCELLENCE */}
                                         <div className='flex gap-[45px] pl-[25px]'>
-                                            <img src='/brand_journey/excellence_icon.svg' />
+                                            <img src='/brand_journey/excellence_icon.svg' className='w-[70px]' />
                                             <div className=''>
-                                                <h4 className='text-white text-[30px] bw-m'>EXCELLENCE</h4>
-                                                <p className='text-white text-[20px] bw-l leading-[28px]'>Create systems to continuously establish and surpass benchmarks</p>
+                                                <h4 className='text-white text-[28px] bw-m'>EXCELLENCE</h4>
+                                                <p className='text-white text-[17px] bw-l leading-[25px]'>Create systems to continuously establish and surpass benchmarks</p>
                                             </div>
                                         </div>
                                     </div>

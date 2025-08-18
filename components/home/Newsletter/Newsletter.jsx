@@ -11,7 +11,7 @@ const Newsletter = () => {
   return (
     <div
       className="h-full lg:h-[464px] overflow-hidden w-full relative bg-cover  bg-center"
-      style={{ backgroundImage: "url('/newsbg.png')" }}
+      style={{ backgroundImage: "url('/newsbg.webp')" }}
     >
       <div className="lg:max-w-[1340px] ">
         <div className="flex items-center sm:items-end md:justify-center lg:justify-between ">

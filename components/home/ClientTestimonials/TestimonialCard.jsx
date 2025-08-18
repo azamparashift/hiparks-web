@@ -424,10 +424,8 @@ const TestimonialCard = ({
 
   return (
     <>
-      <motion.article
-        // ... all your article props and styling ...
-        className="bg-inherit relative w-[300px] h-full sm:w-[420px] md:w-auto 1024:w-[720px] md:mx-0 xl:w-[930px] sm:h-[480px] md:h-[771px] lg:h-[460px] xl:h-[460px] flex flex-col lg:flex-row border border-[#CDCDCD] shadow rounded-none overflow-hidden"
-      >
+      <motion.article className="bg-inherit relative w-[300px] h-full sm:w-[420px] md:w-auto 1024:w-[720px] md:mx-0 xl:w-[930px] sm:h-[480px] md:h-[771px] lg:h-[460px] xl:h-[460px] flex flex-col lg:flex-row border border-[#CDCDCD] shadow rounded-none overflow-hidden">
+        {/* --- Left Side (Image) --- */}
         <div className="relative w-full min-h-[220px] sm:min-h-[300px] md:min-h-[48.5%] h-full">
           {thumbnail && (
             <Image
@@ -439,9 +437,26 @@ const TestimonialCard = ({
               priority={!!isActive}
             />
           )}
+
+          {/* ✅ Green Arrow (Mobile Only - in Image Section) */}
+          <div className="absolute top-0 right-0 z-20 block lg:hidden">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-[30px] h-[30px] sm:w-[45px] sm:h-[45px]"
+            >
+              <path
+                d="M50 0H0L17.0103 16.4103H33.5052V32.8205L50 50V0Z"
+                fill={isActive ? "#3AB04A" : "#DEDDCE"}
+              />
+            </svg>
+          </div>
+
           {video && (
             <button
-              // ✅ CHANGE 2: On click, set the activeVideo state to the actual video URL.
               onClick={() => setActiveVideo(video)}
               className="absolute cursor-pointer bottom-2 right-2 md:bottom-4 md:right-4 py-2 px-4 md:px-[15px] md:py-[15px] lg:px-[30px] lg:py-[15px] text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] inter-sb text-white bg-black/75 rounded-none flex items-center gap-2"
             >
@@ -453,7 +468,7 @@ const TestimonialCard = ({
           )}
         </div>
 
-        {/* --- Right Side: Content (No changes needed here) --- */}
+        {/* --- Right Side (Text Content) --- */}
         <div className="flex w-full flex-col relative justify-center min-h-[242px] sm:h-full px-[12px] py-[16px] bg-white sm:px-[15px] sm:py-[20px] md:min-w-[51.5%] xl:pl-[50px] xl:pr-[24px] gap-4 sm:gap-[10px] md:gap-[12px] lg:gap-[20px] xl:gap-[45px]">
           {logo && (
             <div>
@@ -476,21 +491,23 @@ const TestimonialCard = ({
             />
             <p
               itemProp="reviewBody"
-              className="inter-b text-[16px] sm:text-[18px] md:text-[20px] leading-[18px] sm:leading-[20px] md:leading-[30px] text-[#000]"
+              className="bw-m text-[16px] sm:text-[18px] md:text-[20px] leading-[18px] sm:leading-[20px] md:leading-[30px] text-[#000]"
             >
               {quote}
             </p>
           </div>
           <div className="max-w-lg leading-3.5 sm:leading-[25px] lg:leading-[30px]">
-            <strong className="inter-sb text-black sm:text-[14px] md:text-[18px]">
+            <strong className="bw-sb text-black sm:text-[14px] md:text-[18px] 1280:text-[20px]">
               <span>{name}</span>
             </strong>
             <br />
-            <span className="inter-r text-[10px] sm:text-[14px] md:text-[16px] text-[#475467] leading-[14px] md:leading-[16px]">
+            <span className="bw-r text-[10px] sm:text-[14px] md:text-[16px] text-[#475467] leading-[14px] md:leading-[16px] 1280:text-[18px]">
               {role}
             </span>
           </div>
-          <div className="absolute top-0 right-0 z-20">
+
+          {/* ✅ Green Arrow (Desktop Only - in Content Section) */}
+          <div className="absolute top-0 right-0 z-20 hidden lg:block">
             <svg
               width="50"
               height="50"

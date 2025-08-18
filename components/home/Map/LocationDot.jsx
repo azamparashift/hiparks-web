@@ -153,12 +153,12 @@ const LocationDot = ({
   x = 100,
   y = 100,
   label = "Unknown",
-  color, // Default to red if no color is provided
+  color = "red",
   onClick,
   onMouseEnter,
   onMouseLeave,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const handleMouseEnter = (e) => {
     setIsHovered(true);
@@ -172,6 +172,18 @@ const LocationDot = ({
 
   return (
     <g>
+      <defs>
+        <filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow
+            dx="1"
+            dy="1"
+            stdDeviation="1"
+            floodColor="black"
+            floodOpacity="0.8"
+          />
+        </filter>
+      </defs>
+
       <circle
         cx={x}
         cy={y}
@@ -185,15 +197,17 @@ const LocationDot = ({
         onMouseLeave={handleMouseLeave}
         onClick={onClick}
       />
+
       <text
         x={x}
-        y={y + 4} // Adjust this value to control vertical spacing below the circle
+        y={y + 3.5}
         className="cursor-pointer"
         fill="#fff"
         fontSize="3"
         fontWeight="500"
-        textAnchor="middle" // Center horizontally
-        dominantBaseline="hanging" // Align top of text with y position
+        textAnchor="middle"
+        dominantBaseline="hanging"
+        filter="url(#text-shadow)" // ✅ Apply the filter here
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={onClick}
@@ -203,5 +217,4 @@ const LocationDot = ({
     </g>
   );
 };
-
 export default LocationDot;

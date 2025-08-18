@@ -377,7 +377,7 @@ export default function CustomDropdown({
   }, [isDropdownOpen]);
 
   return (
-    <div className="w-full bg-[#262626] px-[16px] py-[14px] mb-3 text-left z-[60] text-white">
+    <div className="w-full bg-[#212324] px-[16px] pt-[32px] pb-3 mb-0 text-left z-[60] text-white">
       <div className="relative w-full">
         {/* Dropdown Trigger Button */}
         <button

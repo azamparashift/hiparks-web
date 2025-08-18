@@ -10,35 +10,15 @@ import 'swiper/css/navigation';
 
 const awards = [
   {
-    title: "Building Warehousing Competitiveness",
-    subtitle: "ET Real Estate Awards",
+    title: "Frontiers of Grade A Industrial Parks",
+    subtitle: "10th edition of the CII IL Supply Chain and Logistics Excellence (SCALE) Awards",
     image: "/brand_journey/award_img.png",
   },
   {
-    title: "16th Realty+ Excellence Awards 2024, SOUTH",
-    subtitle: "ET Real Estate Awards",
-    image: "/brand_journey/award_img.png",
-  },
-  {
-    title: "Building Warehousing Competitiveness",
-    subtitle: "ET Real Estate Awards",
-    image: "/brand_journey/award_img.png",
-  },
-  {
-    title: "Durables Connect 2024",
-    subtitle: "ET Real Estate Awards",
-    image: "/brand_journey/award_img.png",
-  },
-  {
-    title: "Best Industrial & Logistics Park Developer",
-    subtitle: "ET Real Estate Awards",
-    image: "/brand_journey/award_img.png",
-  },
-  {
-    title: "Green Mumbai Summit",
-    subtitle: "ET Real Estate Awards",
-    image: "/brand_journey/award_img.png",
-  },
+    title: "Fastest Growing Industrial and Logistic Park",
+    subtitle: "15th Express Logistics & Supply Chain Awards",
+    image: "/brand_journey/awards/2023/fast_growing_2023.png",
+  }
 ];
 
 export default function Awrd_2023() {
@@ -93,11 +73,11 @@ export default function Awrd_2023() {
                 `}
               >
                 {/* Front */}
-                <div className="absolute left-0 w-full h-full bg-white flex items-center justify-center backface-hidden border border-[#CDCDCD] flex-col ml-[0px] md:ml-[1px] 1280:ml-[0px] 1920:ml-[1px] cursor-pointer">
+                <div className="absolute left-0 w-full h-full bg-white flex items-center justify-center backface-hidden border border-[#CDCDCD] flex-col ml-[0px] md:ml-[1px] 1280:ml-[0px] 1920:ml-[1px] cursor-pointer text-center  md:px-[20px] px-[10px]">
                   <h2 className="text-[28px] leading-[35px] lg:text-[24px] lg:leading-[34px] xl:text-[28px] xl:leading-[35px] bw-m text-[#000] text-center mb-[8px]">
                     {award.title}
                   </h2>
-                  <p className="inter-r text-[18px] leading-[20px] lg:text-[16px] xl:text-[18px]">
+                  <p className="inter-r text-[15px] leading-[20px] lg:text-[15px] xl:text-[15px]">
                     {award.subtitle}
                   </p>
                   <img
@@ -112,11 +92,11 @@ export default function Awrd_2023() {
                 </div>
 
                 {/* Back */}
-                <div className="absolute left-0 w-full h-full text-white flex items-center justify-center [transform:rotateY(180deg)] border border-[#CDCDCD] backface-hidden flex-col ml-[0px] md:ml-[1px] 1280:ml-[0px] 1920:ml-[1px] cursor-pointer">
-                  <img src={award.image} alt="award" />
-                  <h2 className="text-[28px] leading-[35px] lg:text-[24px] lg:leading-[34px] xl:text-[28px] xl:leading-[35px] bw-m text-[#000] text-center mb-[8px]">
+                <div className="absolute left-0 w-full h-full text-white flex items-center justify-center [transform:rotateY(180deg)] border border-[#CDCDCD] backface-hidden flex-col ml-[0px] md:ml-[1px] 1280:ml-[0px] 1920:ml-[-1px] cursor-pointer">
+                  <img className="absolute top-[auto] bottom-0 w-[75%]" src={award.image} alt="award" />
+                  {/* <h2 className="text-[28px] leading-[35px] lg:text-[24px] lg:leading-[34px] xl:text-[28px] xl:leading-[35px] bw-m text-[#000] text-center mb-[8px]">
                     {award.title}
-                  </h2>
+                  </h2> */}
                   <img
                     src="/brand_journey/flip_icon.svg"
                     className="absolute top-0 right-0"

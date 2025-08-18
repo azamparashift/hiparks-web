@@ -1604,20 +1604,194 @@
 //   );
 // }
 
+// "use client";
+// import { motion, AnimatePresence } from "framer-motion";
+// import { useEffect, useRef, useState, useCallback } from "react";
+
+// export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
+//   const containerRef = useRef(null);
+//   const videoRef = useRef(null);
+
+//   // Set a longer scroll duration to match the video length
+//   const baseScrollSpeed = 300;
+//   const [scrollDuration, setScrollDuration] = useState(2000);
+
+//   const [videoDuration, setVideoDuration] = useState(0);
+//   const [currentTime, setCurrentTime] = useState(0);
+//   const rafRef = useRef(null);
+//   const lastScrollY = useRef(0);
+//   const lastKnownVideoTime = useRef(0);
+
+//   // Load video metadata and set scroll duration
+//   useEffect(() => {
+//     const video = videoRef.current;
+//     if (!video) return;
+
+//     const handleLoadedMetadata = () => {
+//       const duration = video.duration;
+//       setVideoDuration(duration);
+//       // Calculate scroll duration based on video length
+//       setScrollDuration(Math.round(duration * baseScrollSpeed));
+//       video.currentTime = 0; // Ensure video starts at 0
+//     };
+
+//     video.addEventListener("loadedmetadata", handleLoadedMetadata);
+//     return () =>
+//       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+//   }, []);
+
+//   // Memoized function to update video time based on scroll
+//   const updateVideoTime = useCallback(() => {
+//     const container = containerRef.current;
+//     const video = videoRef.current;
+//     if (!container || !video || !videoDuration) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     const scrollY = window.scrollY;
+//     // Skip update if scroll position hasn't changed significantly
+//     if (Math.abs(scrollY - lastScrollY.current) < 1) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+//     lastScrollY.current = scrollY;
+
+//     const containerTop = container.getBoundingClientRect().top + window.scrollY;
+//     const relativeScroll = scrollY - containerTop;
+//     const clampedScroll = Math.max(0, Math.min(scrollDuration, relativeScroll));
+//     const progress = clampedScroll / scrollDuration;
+//     const targetTime = progress * videoDuration;
+
+//     // Smooth out the time change to prevent jittering on fast scrolls
+//     const dampenedTime =
+//       lastKnownVideoTime.current +
+//       (targetTime - lastKnownVideoTime.current) * 0.1;
+
+//     // Snap the time to a specific frame rate for a consistent look
+//     const desiredFps = 30; // You can adjust this value (e.g., 24, 60)
+//     const frameTimeStep = 1 / desiredFps;
+//     const snappedTime =
+//       Math.round(dampenedTime / frameTimeStep) * frameTimeStep;
+
+//     // Update video and state only if the time has changed significantly
+//     if (Math.abs(video.currentTime - snappedTime) > 0.03) {
+//       video.currentTime = snappedTime;
+//       setCurrentTime(snappedTime);
+//     }
+
+//     lastKnownVideoTime.current = snappedTime;
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//   }, [videoDuration, scrollDuration]);
+
+//   // Set up scroll listener with continuous animation frame
+//   useEffect(() => {
+//     if (!videoDuration) return;
+
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+
+//     return () => {
+//       if (rafRef.current) {
+//         cancelAnimationFrame(rafRef.current);
+//       }
+//     };
+//   }, [updateVideoTime, videoDuration]);
+
+//   // Find active text based on current video time
+//   const activeText = timedTexts.find(
+//     (t) => currentTime >= t.start && currentTime <= t.end
+//   );
+
+//   // Define animation variants for a smooth roll effect
+//   // const textVariants = {
+//   //   initial: { y: 200 },
+//   //   animate: { y: 0, transition: { duration: 0.5 } },
+//   //   exit: { y: -50, transition: { duration: 0.3 } },
+//   // };
+//   const textVariants = {
+//     initial: { y: 200 },
+//     animate: { y: 0, transition: { duration: 1 } },
+//     exit: { y: -50, transition: { duration: 1.2 } },
+//   };
+
+//   return (
+//     <div
+//       ref={containerRef}
+//       className="flex justify-end"
+//       style={{ height: `${scrollDuration + window.innerHeight}px` }}
+//     >
+//       <div className="sticky top-0 z-10 flex w-full h-screen mr-0 ">
+//         {/* Background Video - Positioned absolutely to fill the container */}
+//         <video
+//           ref={videoRef}
+//           src={videoSrc}
+//           className="absolute inset-0 right-0 left-auto object-contain w-[86%] h-full"
+//           muted
+//           playsInline
+//           preload="auto"
+//           onPlay={(e) => e.target.pause()}
+//         />
+
+//         {/* Text Container - Positioned absolutely with higher z-index */}
+//         <div className="absolute top-0 left-0 z-20 flex items-center h-full px-8 text-black">
+//           <div className="max-w-sm ">
+//             <AnimatePresence mode="wait">
+//               {activeText && (
+//                 <motion.div
+//                   key={activeText.title}
+//                   variants={textVariants}
+//                   initial="initial"
+//                   animate="animate"
+//                   exit="exit"
+//                 >
+//                   <h2 className="text-2xl font-bold whitespace-nowrap 1280:text-[150px] 1366:text-[200px] bw-sb">
+//                     {activeText.title}
+//                   </h2>
+//                   <p className=" text-base 1280:text-[100px] 1366:text-[116px] bw-r">
+//                     {activeText.subtitle}
+//                   </p>
+//                   <motion.div
+//                     className="lg:flex hidden justify-start h-[58px] overflow-hidden"
+//                     // initial={{ width: 0 }}
+//                     // whileInView={{ width: "257px" }}
+//                     // viewport={{ once: true, amount: 0.6 }}
+//                     // transition={{
+//                     //   duration: 1,
+//                     //   ease: [0.7, 0, 0.4, 1],
+//                     //   delay: 0.5,
+//                     // }}
+//                   >
+//                     <img
+//                       src="/frm2.png"
+//                       alt="Truck"
+//                       className="object-cover h-full"
+//                     />
+//                   </motion.div>
+//                 </motion.div>
+//               )}
+//             </AnimatePresence>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
 
-  // Set a longer scroll duration to match the video length
-  const baseScrollSpeed = 300;
   const [scrollDuration, setScrollDuration] = useState(2000);
-
   const [videoDuration, setVideoDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
   const rafRef = useRef(null);
   const lastScrollY = useRef(0);
   const lastKnownVideoTime = useRef(0);
@@ -1630,9 +1804,8 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
     const handleLoadedMetadata = () => {
       const duration = video.duration;
       setVideoDuration(duration);
-      // Calculate scroll duration based on video length
-      setScrollDuration(Math.round(duration * baseScrollSpeed));
-      video.currentTime = 0; // Ensure video starts at 0
+      setScrollDuration(Math.round(duration * 300)); // Using a base scroll speed
+      video.currentTime = 0;
     };
 
     video.addEventListener("loadedmetadata", handleLoadedMetadata);
@@ -1640,7 +1813,6 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
   }, []);
 
-  // Memoized function to update video time based on scroll
   const updateVideoTime = useCallback(() => {
     const container = containerRef.current;
     const video = videoRef.current;
@@ -1650,7 +1822,6 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
     }
 
     const scrollY = window.scrollY;
-    // Skip update if scroll position hasn't changed significantly
     if (Math.abs(scrollY - lastScrollY.current) < 1) {
       rafRef.current = requestAnimationFrame(updateVideoTime);
       return;
@@ -1663,21 +1834,17 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
     const progress = clampedScroll / scrollDuration;
     const targetTime = progress * videoDuration;
 
-    // Smooth out the time change to prevent jittering on fast scrolls
     const dampenedTime =
       lastKnownVideoTime.current +
       (targetTime - lastKnownVideoTime.current) * 0.1;
 
-    // Snap the time to a specific frame rate for a consistent look
-    const desiredFps = 30; // You can adjust this value (e.g., 24, 60)
+    const desiredFps = 30;
     const frameTimeStep = 1 / desiredFps;
     const snappedTime =
       Math.round(dampenedTime / frameTimeStep) * frameTimeStep;
 
-    // Update video and state only if the time has changed significantly
     if (Math.abs(video.currentTime - snappedTime) > 0.03) {
       video.currentTime = snappedTime;
-      setCurrentTime(snappedTime);
     }
 
     lastKnownVideoTime.current = snappedTime;
@@ -1687,7 +1854,6 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
   // Set up scroll listener with continuous animation frame
   useEffect(() => {
     if (!videoDuration) return;
-
     rafRef.current = requestAnimationFrame(updateVideoTime);
 
     return () => {
@@ -1697,17 +1863,13 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
     };
   }, [updateVideoTime, videoDuration]);
 
-  // Find active text based on current video time
-  const activeText = timedTexts.find(
-    (t) => currentTime >= t.start && currentTime <= t.end
-  );
+  // Use Framer Motion's useScroll for text animations
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  // Define animation variants for a smooth roll effect
-  const textVariants = {
-    initial: { opacity: 0, y: 50 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    exit: { opacity: 0, y: -50, transition: { duration: 0.3 } },
-  };
+  const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div
@@ -1716,41 +1878,485 @@ export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
       style={{ height: `${scrollDuration + window.innerHeight}px` }}
     >
       <div className="sticky top-0 z-10 flex w-full h-screen mr-0 ">
-        {/* Background Video - Positioned absolutely to fill the container */}
         <video
           ref={videoRef}
           src={videoSrc}
-          className="absolute inset-0 right-0 left-auto object-contain w-[80%] h-full"
+          className="absolute inset-0 right-0 left-auto object-contain w-[86%] h-full"
           muted
           playsInline
           preload="auto"
           onPlay={(e) => e.target.pause()}
         />
 
-        {/* Text Container - Positioned absolutely with higher z-index */}
         <div className="absolute top-0 left-0 z-20 flex items-center h-full px-8 text-black">
           <div className="max-w-sm">
-            <AnimatePresence mode="wait">
-              {activeText && (
+            {timedTexts.map((text, index) => {
+              // Calculate the scroll progress range for this specific text item
+              const startRange = (text.start / videoDuration) * 1.25;
+              const endRange = (text.end / videoDuration) * 1.25;
+
+              // Create transforms for opacity and y position
+              const opacity = useTransform(
+                scrollProgress,
+                [startRange, startRange + 0.05, endRange - 0.05, endRange],
+                [0, 1, 1, 0]
+              );
+
+              const y = useTransform(
+                scrollProgress,
+                [startRange, startRange + 0.05, endRange - 0.05, endRange],
+                [100, 0, 0, -50]
+              );
+
+              return (
                 <motion.div
-                  key={activeText.title}
-                  variants={textVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
+                  key={index}
+                  style={{ opacity, y }}
+                  className="absolute"
                 >
-                  <h2 className="text-2xl font-bold sm:text-8xl">
-                    {activeText.title}
+                  <h2 className="text-2xl font-bold whitespace-nowrap 1280:text-[150px] 1366:text-[200px] bw-sb">
+                    {text.title}
                   </h2>
-                  <p className="mt-2 text-base sm:text-lg">
-                    {activeText.subtitle}
+                  <p className=" text-base 1280:text-[100px] 1366:text-[116px] bw-r">
+                    {text.subtitle}
                   </p>
+                  <motion.div className="lg:flex hidden justify-start h-[58px] overflow-hidden">
+                    <img
+                      src="/frm2.png"
+                      alt="Truck"
+                      className="object-cover h-full"
+                    />
+                  </motion.div>
                 </motion.div>
-              )}
-            </AnimatePresence>
+              );
+            })}
           </div>
         </div>
       </div>
     </div>
   );
 }
+// "use client";
+// import { motion, useScroll, useTransform } from "framer-motion";
+// import { useEffect, useRef, useState, useCallback } from "react";
+
+// export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
+//   const containerRef = useRef(null);
+//   const videoRef = useRef(null);
+
+//   const [scrollDuration, setScrollDuration] = useState(2000);
+//   const [videoDuration, setVideoDuration] = useState(0);
+//   const rafRef = useRef(null);
+//   const lastScrollY = useRef(0);
+//   const lastKnownVideoTime = useRef(0);
+
+//   // Load video metadata
+//   useEffect(() => {
+//     const video = videoRef.current;
+//     if (!video) return;
+
+//     const handleLoadedMetadata = () => {
+//       const duration = video.duration;
+//       setVideoDuration(duration);
+//       setScrollDuration(Math.round(duration * 300)); // scroll speed stays same
+//       video.currentTime = 0;
+//     };
+
+//     video.addEventListener("loadedmetadata", handleLoadedMetadata);
+//     return () =>
+//       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+//   }, []);
+
+//   // Smooth scroll → video time update
+//   const updateVideoTime = useCallback(() => {
+//     const container = containerRef.current;
+//     const video = videoRef.current;
+//     if (!container || !video || !videoDuration) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     const scrollY = window.scrollY;
+//     if (Math.abs(scrollY - lastScrollY.current) < 1) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+//     lastScrollY.current = scrollY;
+
+//     const containerTop = container.getBoundingClientRect().top + window.scrollY;
+//     const relativeScroll = scrollY - containerTop;
+//     const clampedScroll = Math.max(0, Math.min(scrollDuration, relativeScroll));
+//     const progress = clampedScroll / scrollDuration;
+//     const targetTime = progress * videoDuration;
+
+//     // Dampen + snap to ~30fps
+//     const dampenedTime =
+//       lastKnownVideoTime.current +
+//       (targetTime - lastKnownVideoTime.current) * 0.1;
+
+//     const desiredFps = 30;
+//     const frameTimeStep = 1 / desiredFps;
+//     const snappedTime =
+//       Math.round(dampenedTime / frameTimeStep) * frameTimeStep;
+
+//     if (Math.abs(video.currentTime - snappedTime) > 0.03) {
+//       video.currentTime = snappedTime;
+//     }
+
+//     lastKnownVideoTime.current = snappedTime;
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//   }, [videoDuration, scrollDuration]);
+
+//   useEffect(() => {
+//     if (!videoDuration) return;
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//     return () => {
+//       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+//     };
+//   }, [updateVideoTime, videoDuration]);
+
+//   // Framer Motion text animations
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start end", "end start"],
+//   });
+
+//   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+//   return (
+//     <div
+//       ref={containerRef}
+//       className="flex justify-center"
+//       style={{ height: `${scrollDuration + window.innerHeight}px` }}
+//     >
+//       <div className="sticky top-0 z-10 flex w-full h-screen mr-0">
+//         <video
+//           ref={videoRef}
+//           src={videoSrc}
+//           className="absolute inset-0 right-0 left-auto object-contain w-[86%] h-full"
+//           muted
+//           playsInline
+//           preload="auto"
+//           onPlay={(e) => e.target.pause()}
+//         />
+
+//         {/* TEXT OVERLAY (unchanged styling) */}
+//         <div className="absolute top-0 left-0 z-20 flex justify-center items-center h-full px-8 text-black">
+//           <div className="max-w-sm">
+//             {timedTexts.map((text, index) => {
+//               const startRange = (text.start / videoDuration) * 1.25;
+//               const endRange = (text.end / videoDuration) * 1.25;
+
+//               const opacity = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [0, 1, 1, 0]
+//               );
+
+//               const y = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [100, 0, 0, -50]
+//               );
+
+//               return (
+//                 <motion.div
+//                   key={index}
+//                   style={{ opacity, y }}
+//                   className="absolute"
+//                 >
+//                   <h2 className="text-2xl font-bold whitespace-nowrap 1280:text-[150px] 1366:text-[200px] bw-sb">
+//                     {text.title}
+//                   </h2>
+//                   <p className="text-base 1280:text-[100px] 1366:text-[116px] bw-r">
+//                     {text.subtitle}
+//                   </p>
+//                   <motion.div className="lg:flex hidden justify-start h-[58px] overflow-hidden">
+//                     <img
+//                       src="/frm2.png"
+//                       alt="Truck"
+//                       className="object-cover h-full"
+//                     />
+//                   </motion.div>
+//                 </motion.div>
+//               );
+//             })}
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+// "use client";
+// import { motion, useScroll, useTransform } from "framer-motion";
+// import { useEffect, useRef, useState, useCallback } from "react";
+
+// export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
+//   const containerRef = useRef(null);
+//   const videoRef = useRef(null);
+//   const [scrollDuration, setScrollDuration] = useState(2000);
+//   const [videoDuration, setVideoDuration] = useState(0);
+//   const rafRef = useRef(null);
+//   const lastScrollY = useRef(0);
+//   const lastKnownVideoTime = useRef(0);
+
+//   // load video duration
+//   useEffect(() => {
+//     const video = videoRef.current;
+//     if (!video) return;
+
+//     const handleLoadedMetadata = () => {
+//       const duration = video.duration;
+//       setVideoDuration(duration);
+//       setScrollDuration(Math.round(duration * 300));
+//       video.currentTime = 0;
+//     };
+
+//     video.addEventListener("loadedmetadata", handleLoadedMetadata);
+//     return () =>
+//       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+//   }, []);
+
+//   // scroll → video time mapping
+//   const updateVideoTime = useCallback(() => {
+//     const container = containerRef.current;
+//     const video = videoRef.current;
+//     if (!container || !video || !videoDuration) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     const scrollY = window.scrollY;
+//     if (Math.abs(scrollY - lastScrollY.current) < 1) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     lastScrollY.current = scrollY;
+//     const containerTop = container.getBoundingClientRect().top + window.scrollY;
+//     const relativeScroll = scrollY - containerTop;
+//     const clampedScroll = Math.max(0, Math.min(scrollDuration, relativeScroll));
+//     const progress = clampedScroll / scrollDuration;
+//     const targetTime = progress * videoDuration;
+
+//     // smooth + snap
+//     const dampenedTime =
+//       lastKnownVideoTime.current +
+//       (targetTime - lastKnownVideoTime.current) * 0.1;
+//     const frameTimeStep = 1 / 30;
+//     const snappedTime =
+//       Math.round(dampenedTime / frameTimeStep) * frameTimeStep;
+
+//     if (Math.abs(video.currentTime - snappedTime) > 0.03) {
+//       video.currentTime = snappedTime;
+//     }
+//     lastKnownVideoTime.current = snappedTime;
+
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//   }, [videoDuration, scrollDuration]);
+
+//   useEffect(() => {
+//     if (!videoDuration) return;
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//     return () => {
+//       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+//     };
+//   }, [updateVideoTime, videoDuration]);
+
+//   // scroll progress for texts
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start end", "end start"],
+//   });
+//   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="text-white w-full bg-slate-950"
+//       style={{ height: `${scrollDuration + window.innerHeight}px` }}
+//     >
+//       <div className="grid grid-cols-2">
+//         {/* LEFT sticky number/text */}
+//         <div className="sticky top-0 h-screen flex items-center justify-center">
+//           <div className="relative w-full h-full flex items-center justify-center">
+//             {timedTexts.map((text, i) => {
+//               const startRange = (text.start / videoDuration) * 1.25;
+//               const endRange = (text.end / videoDuration) * 1.25;
+//               const opacity = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [0, 1, 1, 0]
+//               );
+//               const y = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [100, 0, 0, -50]
+//               );
+
+//               return (
+//                 <motion.div
+//                   key={i}
+//                   style={{ opacity, y }}
+//                   className="absolute text-center"
+//                 >
+//                   <h2 className="text-7xl font-bold mb-4">{text.title}</h2>
+//                   <p className="text-2xl">{text.subtitle}</p>
+//                 </motion.div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         {/* RIGHT sticky video */}
+//         <div className="sticky top-0 h-screen flex items-center justify-center">
+//           <video
+//             ref={videoRef}
+//             src={videoSrc}
+//             className="w-[86%] h-full object-contain"
+//             muted
+//             playsInline
+//             preload="auto"
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// "use client";
+// import { motion, useScroll, useTransform } from "framer-motion";
+// import { useEffect, useRef, useState, useCallback } from "react";
+
+// export default function ScrollVideoSection({ videoSrc, timedTexts = [] }) {
+//   const containerRef = useRef(null);
+//   const videoRef = useRef(null);
+//   const [scrollDuration, setScrollDuration] = useState(2000);
+//   const [videoDuration, setVideoDuration] = useState(0);
+//   const rafRef = useRef(null);
+//   const lastScrollY = useRef(0);
+//   const lastKnownVideoTime = useRef(0);
+
+//   // load video duration
+//   useEffect(() => {
+//     const video = videoRef.current;
+//     if (!video) return;
+
+//     const handleLoadedMetadata = () => {
+//       const duration = video.duration;
+//       setVideoDuration(duration);
+//       setScrollDuration(Math.round(duration * 300));
+//       video.currentTime = 0;
+//     };
+
+//     video.addEventListener("loadedmetadata", handleLoadedMetadata);
+//     return () =>
+//       video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+//   }, []);
+
+//   // scroll → video time mapping
+//   const updateVideoTime = useCallback(() => {
+//     const container = containerRef.current;
+//     const video = videoRef.current;
+//     if (!container || !video || !videoDuration) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     const scrollY = window.scrollY;
+//     if (Math.abs(scrollY - lastScrollY.current) < 1) {
+//       rafRef.current = requestAnimationFrame(updateVideoTime);
+//       return;
+//     }
+
+//     lastScrollY.current = scrollY;
+//     const containerTop = container.getBoundingClientRect().top + window.scrollY;
+//     const relativeScroll = scrollY - containerTop;
+//     const clampedScroll = Math.max(0, Math.min(scrollDuration, relativeScroll));
+//     const progress = clampedScroll / scrollDuration;
+//     const targetTime = progress * videoDuration;
+
+//     // smooth + snap
+//     const dampenedTime =
+//       lastKnownVideoTime.current +
+//       (targetTime - lastKnownVideoTime.current) * 0.1;
+//     const frameTimeStep = 1 / 30;
+//     const snappedTime =
+//       Math.round(dampenedTime / frameTimeStep) * frameTimeStep;
+
+//     if (Math.abs(video.currentTime - snappedTime) > 0.03) {
+//       video.currentTime = snappedTime;
+//     }
+//     lastKnownVideoTime.current = snappedTime;
+
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//   }, [videoDuration, scrollDuration]);
+
+//   useEffect(() => {
+//     if (!videoDuration) return;
+//     rafRef.current = requestAnimationFrame(updateVideoTime);
+//     return () => {
+//       if (rafRef.current) cancelAnimationFrame(rafRef.current);
+//     };
+//   }, [updateVideoTime, videoDuration]);
+
+//   // scroll progress for texts
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start end", "end start"],
+//   });
+//   const scrollProgress = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+//   return (
+//     <section
+//       ref={containerRef}
+//       className="text-white w-full bg-slate-950"
+//       style={{ height: `${scrollDuration + window.innerHeight}px` }}
+//     >
+//       <div className="grid grid-cols-2">
+//         {/* LEFT sticky number/text */}
+//         <div className="sticky top-0 h-screen flex items-center justify-center">
+//           <div className="relative w-full h-full flex items-center justify-center">
+//             {timedTexts.map((text, i) => {
+//               const startRange = (text.start / videoDuration) * 1.25;
+//               const endRange = (text.end / videoDuration) * 1.25;
+//               const opacity = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [0, 1, 1, 0]
+//               );
+//               const y = useTransform(
+//                 scrollProgress,
+//                 [startRange, startRange + 0.05, endRange - 0.05, endRange],
+//                 [100, 0, 0, -50]
+//               );
+
+//               return (
+//                 <motion.div
+//                   key={i}
+//                   style={{ opacity, y }}
+//                   className="absolute text-center"
+//                 >
+//                   <h2 className="text-7xl font-bold mb-4">{text.title}</h2>
+//                   <p className="text-2xl">{text.subtitle}</p>
+//                 </motion.div>
+//               );
+//             })}
+//           </div>
+//         </div>
+
+//         {/* RIGHT sticky video */}
+//         <div className="sticky top-0 h-screen flex items-center justify-center">
+//           <video
+//             ref={videoRef}
+//             src={videoSrc}
+//             className="w-[86%] h-full object-contain"
+//             muted
+//             playsInline
+//             preload="auto"
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
